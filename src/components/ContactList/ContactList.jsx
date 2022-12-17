@@ -8,20 +8,20 @@ import {
 export const ContactList = () => {
   // const dispatch = useDispatch();
 
-  const contacts = useSelector(state => state.contacts.contacts);
+  const contacts = useSelector(state => state.contacts.items);
   console.log(contacts);
 
-  const filter = useSelector(state => state.filter.filter);
+  // const filter = useSelector(state => state.filter.filter);
 
-  const filtered = contacts?.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
+  // const filtered = contacts?.filter(contact =>
+  //   contact.name.toLowerCase().includes(filter.toLowerCase())
+  // );
 
   return (
     <List>
-      {filtered?.map(({ name, number, id }) => (
+      {contacts?.map(({ name, phone, id }) => (
         <li key={id}>
-          {name}: {number}
+          {name}: {phone}
           <Delete
             type="button"
             id={id}

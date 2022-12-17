@@ -4,7 +4,7 @@ import { fetchContacts } from './FetchContact';
 const sliceContact = createSlice({
   name: 'contacts',
   initialState: {
-    contacts: [],
+    items: [],
     isLoading: false,
     error: null,
   },
@@ -18,25 +18,26 @@ const sliceContact = createSlice({
   //     );
   //   },
   // },
-  // extraReducers: builder => {
-  //   builder.addCase(fetchContacts.fulfilled, (state, action) => {
-  //     state.contacts = action.payload;
-  //   });
-  // },
-  extraReducers: {
-    [fetchContacts.pending]: state => {
-      state.isLoading = true;
-    },
-    [fetchContacts.fulfilled]: (state, action) => {
-      state.isLoading = false;
-      state.error = null;
-      state.contacts = action.payload;
-    },
-    [fetchContacts.rejected]: (state, action) => {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
+  extraReducers: builder => {
+    builder.addCase(fetchContacts.fulfilled, (state, action) => {
+      state.items = action.payload;
+      state.error = 'жопа';
+    });
   },
+  // extraReducers: {
+  //   [fetchContacts.pending]: state => {
+  //     state.isLoading = true;
+  //   },
+  //   [fetchContacts.fulfilled]: (state, action) => {
+  //     state.isLoading = false;
+  //     state.error = null;
+  //     state.contacts = action.payload;
+  //   },
+  //   [fetchContacts.rejected]: (state, action) => {
+  //     state.isLoading = false;
+  //     state.error = action.payload;
+  //   },
+  // },
 });
 
 const sliceFilter = createSlice({

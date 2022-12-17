@@ -10,7 +10,7 @@ export const fetchContacts = createAsyncThunk(
       const responce = axios.get(
         'https://6397c6fc77359127a03f7a55.mockapi.io/contact'
       );
-      return responce;
+      return responce.data;
     } catch (error) {
       return rejectWithValue(error);
     }
