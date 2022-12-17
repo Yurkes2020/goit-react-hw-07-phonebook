@@ -11,15 +11,15 @@ export const ContactList = () => {
   const contacts = useSelector(state => state.contacts.items);
   console.log(contacts);
 
-  // const filter = useSelector(state => state.filter.filter);
+  const filter = useSelector(state => state.filter.filter);
 
-  // const filtered = contacts?.filter(contact =>
-  //   contact.name.toLowerCase().includes(filter.toLowerCase())
-  // );
+  const filtered = contacts?.filter(contact =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
+  );
 
   return (
     <List>
-      {contacts?.map(({ name, phone, id }) => (
+      {filtered?.map(({ name, phone, id }) => (
         <li key={id}>
           {name}: {phone}
           <Delete
