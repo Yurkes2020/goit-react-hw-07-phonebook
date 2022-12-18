@@ -1,11 +1,10 @@
-import { nanoid } from 'nanoid';
 import { Form, FormLabel } from './ContactForm.styled';
-import { addContact } from 'Redux/Store';
 import { useDispatch, useSelector } from 'react-redux';
+import { addContact } from 'Redux/FetchContact';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts.contacts);
+  const contacts = useSelector(state => state.contacts.items);
 
   const handleSubmit = event => {
     const form = event.currentTarget.elements;
@@ -16,9 +15,8 @@ export const ContactForm = () => {
       ? alert(`${form.name.value} is already in contacts.`)
       : dispatch(
           addContact({
-            id: nanoid(5),
             name: form.name.value,
-            number: form.number.value,
+            phone: form.number.value,
           })
         );
     event.target.reset();
